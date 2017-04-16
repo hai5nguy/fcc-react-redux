@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+        .animal {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 50%;
+        }
+        .animal-quantity {
+            display: inline-block;
+            width: 60px;
+        }
+        .animal-name {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hai's Pet Shop</h1>
+    <div id="mount"></div>
+    <script type="text/javascript">
+
+        var animals = [ 'puppies', 'kittens', 'hamsters', 'fishies', 'birdies' ]
+
+        function render(animals) {
+            var mount = $('#mount');
+            for (var i = 0; i < animals.length; i++) {
+                var animal = 
+                    $('<div class="animal">' +
+                        '<div class="animal-name">' + animals[i] + '</div>' +
+                    '</div>');
+                mount.append(animal)
+            }
+        }
+
+        render(animals)
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+        .animals {
+            display: inline-block;
+            width: 50%;
+        }
+        .details {
+            display: inline-block;
+            /*width: 50%;*/
+            vertical-align: top;
+            margin: 9px 0 0 10px;
+        }
+        .animal {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            cursor: pointer;
+            /*width: 50%;*/
+        }
+        .animal.active {
+            background: #e2deff;
+        }
+        .animal-quantity {
+            display: inline-block;
+            width: 60px;
+        }
+        .animal-name {
+            display: inline-block;
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 24px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mount">
+        <div class="animals"></div>
+        <div class="details"></div>
+        <div>
+            <button class="btn-down">Down</button><button class="btn-up">Up</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var animals = ['puppies', 'kittens', 'hamsters', 'fishies', 'birdies' ]
+        var quantity = [ 3, 5, 20, 40, 9 ]
+
+        function render(animals) {
+            var mount = $('.animals');
+            for (var i = 0; i < animals.length; i++) {
+                var animal = 
+                    $('<div class="animal">' +
+                        '<div class="animal-quantity">' + quantity[i] + '</div>' +
+                        '<div class="animal-name">' + animals[i] + '</div>' +
+                    '</div>');
+
+                animal.click(function () {
+                    $(this).siblings().removeClass('active')
+                    $(this).addClass('active')
+                    var name = $(this).find('.animal-name').html()
+                    $('.details').html(name)
+                })
+
+                mount.append(animal)
+            }
+        }
+
+        $('.btn-down').click(function () {
+            var current = $('.animal.active');
+            var next = current.next();
+            if (!next.length) { return }
+            current.removeClass('active');
+            next.addClass('active');
+        });
+
+        $('.btn-up').click(function () {
+            var current = $('.animal.active');
+            var prev = current.prev();
+            if (!prev.length) { return }
+            current.removeClass('active');
+            prev.addClass('active');
+        });
+
+        render(animals)
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
